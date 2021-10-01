@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { MoralisProvider } from "react-moralis";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import './style.css'
 
 const theme = extendTheme({
   config: {
@@ -16,7 +17,7 @@ const serverUrl = "https://sby07olkn1pg.moralishost.com:2053/server";
 
 ReactDOM.render(
   <MoralisProvider appId={appId} serverUrl={serverUrl}>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <React.StrictMode>
         <App />
       </React.StrictMode>
