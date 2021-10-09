@@ -1,8 +1,11 @@
 import { Component } from "react";
+import ReactGodot from 'react-godot'
 import './about.css'
 
 export default class About extends Component {
-  render() {
-    return <div className='test-12'>About page</div>;
+  render () {
+    return (
+      <ReactGodot script="../../../public/assets/game/Crypto_Universe.js" pck="../../../public/assets/game/Crypto_Universe.pck" />
+    )
   }
 }

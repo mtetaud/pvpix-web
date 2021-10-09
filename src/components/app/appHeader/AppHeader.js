@@ -1,8 +1,14 @@
-import { Box, Button, Image, Grid, Wrap } from "@chakra-ui/react";
+import {
+  Box, Button, Image, Modal, ModalBody,
+  ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, Wrap
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import Authentication from "../../authentication/Authentication";
 import "./AppHeader.css";
 
 export default function AppHeader() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <Box
       width="100%"
@@ -23,7 +29,26 @@ export default function AppHeader() {
         </Link>
       </Wrap>
       <Box width="100%">
-        <Button className="push-right">Login</Button>
+        <Button className="push-right" onClick={onOpen}>
+          Login
+        </Button>
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Modal Title</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Authentication></Authentication>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3} onClick={onClose}>
+                Close
+              </Button>
+              <Button variant="ghost">Secondary Action</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </Box>
     </Box>
   );
